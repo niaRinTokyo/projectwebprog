@@ -33,9 +33,9 @@
                     @foreach ($viewDelete as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->model }}</td>
                             <td>
-                                <a href="category-restore/{{$item->slug}}" class="btn btn-success btn-sm">Restore</a>
+                                <a href="car-restore/{{$item->slug}}" class="btn btn-success btn-sm">Restore</a>
                             </td>
                         </tr>
                     @endforeach
