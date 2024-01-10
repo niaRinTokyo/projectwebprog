@@ -3,50 +3,62 @@
 @section('title', 'Users')
 
 @section('content')
-    <h1>User List</h1>
-
-    <div class="mt-3 d-flex justify-content-end">
-        <a href="/registered-user" class="btn btn-primary me-2">New Registered User</a>
-        <a href="/user-view-ban" class="btn btn-danger">View Banned User</a>
-    </div>
-
-    <div class="mt-3">
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>User List</h1>
+            <div class="d-flex">
+                <a href="/registered-user" class="btn btn-primary me-2">New Registered User</a>
+                <a href="/user-view-ban" class="btn btn-danger">View Banned User</a>
             </div>
-        @endif
-    </div>
+        </div>
 
-    <div class="my-3">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Username</th>
-                    <th>Phone</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $item)
+        @if (session('status'))
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ session('message') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            </script>
+        @endif
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->username }}</td>
-                        <td>
-                            @if ($item->phone)
-                                {{ $item->phone }}
-                            @else
-                                -
-                            @endif
-                        </td>
-                        <td>
-                            <a href="/user-detail/{{$item->slug}}">Detail</a>
-                            <a href="/user-ban/{{$item->slug}}">Ban User</a>
-                        </td>
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Phone</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse ($users as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>
+                                @if ($item->phone)
+                                    {{ $item->phone }}
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td>
+                                <a href="/user-detail/{{$item->slug}}" class="btn btn-info btn-sm me-1">Detail</a>
+                                <a href="/user-ban/{{$item->slug}}" class="btn btn-danger btn-sm">Ban User</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center">No data available</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

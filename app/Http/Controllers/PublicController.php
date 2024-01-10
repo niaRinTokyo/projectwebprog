@@ -12,7 +12,7 @@ class PublicController extends Controller
     {
         $categories = category::all();
 
-        if($request->category || $request->model) {
+        if ($request->category || $request->model) {
             $cars = Car::where('model', 'like', '%'.$request->model.'%')
                         ->orWhereHas('categories', function($q) use($request) {
                             $q->where('categories.id', $request->category);

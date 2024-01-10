@@ -31,7 +31,7 @@ class AuthController extends Controller
                 $request->session()->regenerateToken();
 
                 Session::flash('status', 'Failed');
-                Session::flash('message', 'Your Account is Not Active yet. Please Contact Admin to Activate it!');
+                Session::flash('message', 'Your Account is Not Active yet. Please Wait Admin to Activate it!');
                 return redirect('/login');
             }
 
@@ -69,6 +69,6 @@ class AuthController extends Controller
 
         Session::flash('status', 'Success');
         Session::flash('message', 'Regiter Success. Wait Admin for Approval');
-        return redirect('register');
+        return redirect('/register');
     }
 }

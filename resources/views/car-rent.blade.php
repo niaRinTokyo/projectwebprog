@@ -10,17 +10,24 @@
 
         <div class="mt-3">
             @if (session('message'))
-                <div class="alert {{session('alert-class')}}">
-                    {{ session('message') }}
-                </div>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    Swal.fire({
+                        icon: '{{ session('alert-class') }}',
+                        title: '{{ session('message') }}',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                </script>
             @endif
         </div>
+
 
         <form action="car-rent" method="post">
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Username</label>
-            <input type="text" class="form-control" readonly value="{{$users->username}}">
+                <input type="text" class="form-control" readonly value="{{ $users->username }}">
             </div>
             <input type="hidden" name="user_id" value="{{ $users->id }}">
             <div class="mb-3">

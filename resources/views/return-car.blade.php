@@ -11,9 +11,15 @@
 
         <div class="mt-3">
             @if (session('message'))
-                <div class="alert {{session('alert-class')}}">
-                    {{ session('message') }}
-                </div>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    Swal.fire({
+                        icon: '{{ session('alert-class') }}',
+                        title: '{{ session('message') }}',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                </script>
             @endif
         </div>
 

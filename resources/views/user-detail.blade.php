@@ -36,9 +36,16 @@
 
     <div class="mt-3">
         @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ session('message') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            </script>
         @endif
     </div>
     <div class="mt-3 d-flex justify-content-end">

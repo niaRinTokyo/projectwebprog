@@ -2,6 +2,10 @@
     height: 100vh;
 }
 
+.navbar {
+    background-color: #87bdd8;
+}
+
 .sidebar {
     background: rgb(71, 71, 71);
     color: white;
@@ -12,6 +16,7 @@
     text-decoration: none;
     display: block;
     padding: 15px 10px;
+    align-items: start;
 }
 
 .sidebar a:hover {
@@ -27,7 +32,14 @@
     border: solid 1px;
     padding: 20px 30px;
     color: white;
+    border-radius: 30px;
+    transition: transform 0.3s;
 }
+
+.card-data:hover {
+    transform: scale(1.05);
+}
+
 
 .card-data.car {
     background: teal;
@@ -52,3 +64,67 @@
 .card-count {
     font-size: 20px;
 }
+
+.container {
+    margin-top: 20px;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-primary {
+    border-radius: 0;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+.card-title {
+    font-size: 1.2em;
+}
+
+.card-text {
+    font-size: 1em;
+}
+
+.text-success {
+    color: #28a745;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+

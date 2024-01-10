@@ -18,25 +18,30 @@
     </div>
 
     <div class="my-3">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($viewDelete as $item)
+        @if ($viewDelete->isEmpty())
+            <p class="lead">No deleted categories available.</p>
+        @else
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>
-                            <a href="category-restore/{{$item->slug}}">Restore</a>
-                        </td>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($viewDelete as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>
+                                <a href="category-restore/{{$item->slug}}" class="btn btn-success btn-sm">Restore</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
+</div>
 @endsection
