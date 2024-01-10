@@ -32,6 +32,7 @@
                             <a href="/dashboard" @if (request()->route()->uri == 'dashboard') class="active" @endif>Dashboard</a>
                             <a href="/cars" @if (request()->route()->uri == 'cars' ||
                                     request()->route()->uri == 'car-add' ||
+                                    request()->route()->uri == 'car-view-delete' ||
                                     request()->route()->uri == 'car-edit/{slug}' ||
                                     request()->route()->uri == 'car-delete/{slug}') class="active" @endif>Cars</a>
                             <a href="/" @if (request()->route()->uri == '/') class="active" @endif>Car List</a>
